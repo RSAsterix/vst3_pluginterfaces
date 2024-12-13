@@ -28,10 +28,12 @@
 #define SMTG_INTEL_CXX11_MODE __INTEL_CXX11_MODE__
 #endif
 
-#if !defined (__INTEL_COMPILER)
-#define SMTG_INTEL_COMPILER 0
-#else
+#if defined (__INTEL_COMPILER)
 #define SMTG_INTEL_COMPILER __INTEL_COMPILER
+#elif defined(__INTEL_LLVM_COMPILER)
+#define SMTG_INTEL_COMPILER __INTEL_LLVM_COMPILER
+#else
+#define SMTG_INTEL_COMPILER 0
 #endif
 
 //-----------------------------------------------------------------------------
