@@ -287,6 +287,13 @@ inline wchar_t* wscast (char16* s) { static_assert (sizeof (wchar_t) == sizeof (
 inline char16* wscast (wchar_t* s) { static_assert (sizeof (wchar_t) == sizeof (char16), ""); return reinterpret_cast<char16*> (s);}
 inline const wchar_t* wscast (const char16* s) { static_assert (sizeof (wchar_t) == sizeof (char16), ""); return reinterpret_cast<const wchar_t*> (s); }
 inline const char16* wscast (const wchar_t* s) { static_assert (sizeof (wchar_t) == sizeof (char16), ""); return reinterpret_cast<const char16*> (s); }
+
+#ifdef UNICODE
+#define _tcast(x) wscast(x)
+#else
+inline char* _tcast(char* c) { return c; }
+inline const char* _tcast(const char* c) { return c; }
+#endif
 #endif
 
 //------------------------------------------------------------------------
